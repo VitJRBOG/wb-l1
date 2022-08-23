@@ -1,19 +1,22 @@
 package main
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
-var justString string
-
-func someFunc() {
+func someFunc() string {
 	// генерируем большую строку
 	v := createHugeString(1 << 10)
 
 	// преобразуем подстроку в руны, обрезаем и полученный слайс рун преобразуем обратно в строку
-	justString = string([]rune(v)[:100])
+	justString := string([]rune(v)[:100])
+	return justString
 }
 
 func main() {
-	someFunc()
+	justString := someFunc()
+	fmt.Println(justString)
 }
 
 func createHugeString(rowSize int) string {
